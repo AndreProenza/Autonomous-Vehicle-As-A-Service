@@ -14,6 +14,18 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 
 ---
 
+# Table of Contents
+1. [Introduction](#introduction)
+2. [Core Concepts](#core-concepts)
+3. [Participants](#participants)
+4. [System of Interest](#system-of-interest)
+5. [Use Cases](#use-cases)
+6. [Used Technologies](#used-technologies)
+7. [References](#references)
+8. [Authors](#authors)
+
+---
+
 ## Core concepts 
 
 | Concept                          | Definition                
@@ -28,24 +40,24 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 
 ---
 
-## AVaaS participants
+## Participants
 
 The following participants are considered in this project accordingly with the previous core concepts:
 
-![avass_part](https://user-images.githubusercontent.com/78174997/168423748-39b6d5fa-c4a3-4ef1-bc74-c8761e307363.png)
+<img src="https://user-images.githubusercontent.com/78174997/168423748-39b6d5fa-c4a3-4ef1-bc74-c8761e307363.png" width="630" height="320"/>
 
 --- 
 
-## AVaaS System of Interest 
+## System of Interest 
 
 The system of interest developed in this project is the following. AVaaS system is responsible to mediate the 
 depicted participants accordingly with the use cases described in the use cases section.
 
-![image](https://user-images.githubusercontent.com/78174997/168423860-db74fb48-6409-4cb8-90a4-8468fe0db114.png)
+<img src="https://user-images.githubusercontent.com/78174997/168423860-db74fb48-6409-4cb8-90a4-8468fe0db114.png" width="630" height="320"/>
 
 ---
 
-## AVaaS Use Cases
+## Use Cases
 
 The following six use cases are considered in the project:
 
@@ -55,7 +67,7 @@ The following six use cases are considered in the project:
 requests information, validates the user information and then subscribes or unsubscribes the user and informs the 
 user about the access to the service.
 
-![image](https://user-images.githubusercontent.com/78174997/168424002-643fc0a2-171f-4f3a-90ed-0d6f840f1f2e.png)
+<img src="https://user-images.githubusercontent.com/78174997/168424002-643fc0a2-171f-4f3a-90ed-0d6f840f1f2e.png" width="500" height="270"/>
 
 ### Car manufacturer entering/removing/updating to AVaaS catalog
 
@@ -63,7 +75,8 @@ user about the access to the service.
 by the AVaaS employees. The car manufacturer is responsible to the quality of the information provided. Adding, 
 removing, or updating the catalog represents a topic Kafka provisioning operation
 
-![image](https://user-images.githubusercontent.com/78174997/168424048-885d3ec1-aa74-468e-871b-187874b74af8.png)
+<img src="https://user-images.githubusercontent.com/78174997/168424715-69e511b3-2dd9-4095-beca-bb59c465a3a8.png" width="500" height="270"/>
+
 
 
 ### APILOT developer entering/removing/updating to AVaaS catalog
@@ -72,7 +85,7 @@ removing, or updating the catalog represents a topic Kafka provisioning operatio
 is performed by the AVaaS employees. The APILOT developer is responsible to the quality of the information provided.
 Adding, removing, or updating the catalog represents a topic Kafka provisioning operation
 
-![image](https://user-images.githubusercontent.com/78174997/168424065-cf877263-ad1a-4c63-863b-93b255f6f2a8.png)
+<img src="https://user-images.githubusercontent.com/78174997/168424065-cf877263-ad1a-4c63-863b-93b255f6f2a8.png" width="500" height="270"/>
 
 ### User buying/selling a car 
 
@@ -80,7 +93,7 @@ Adding, removing, or updating the catalog represents a topic Kafka provisioning 
 For that purpose, the AVaaS employee requests information, validates the user information and then assign or unassign 
 the car to a AVaaS user and then informs the user and the car manufacturer
 
-![image](https://user-images.githubusercontent.com/78174997/168424101-6bd045cd-0ff4-4a06-8c0c-aedc8cd5fb83.png)
+<img src="https://user-images.githubusercontent.com/78174997/168424101-6bd045cd-0ff4-4a06-8c0c-aedc8cd5fb83.png" width="500" height="270"/>
 
 ### User selecting/unselecting an APILOT to a car
 
@@ -89,14 +102,32 @@ catalog by a APILOT developer. For that purpose, the AVaaS employee requests inf
 information and then assign or unassign the APILOT to a AVaaS user car and then informs the user and the APILOT 
 developer.
 
-![image](https://user-images.githubusercontent.com/78174997/168424116-f9930d23-d5ce-4dc6-b5df-81e968e24093.png)
+<img src="https://user-images.githubusercontent.com/78174997/168424116-f9930d23-d5ce-4dc6-b5df-81e968e24093.png" width="500" height="270"/>
 
 ### IQ, EQ, AQ Autonomous driving
 
 - AVaaS is responsible to observe all the relevant events produces by cars, send it to the APILOT and then consume 
 the high-level events that can produce IQ, EQ an AQ events. For that end, external services could be triggered
 
-![image](https://user-images.githubusercontent.com/78174997/168424141-1c65c562-f3f6-44b6-9143-e4ffb0ed75d4.png)
+<img src="https://user-images.githubusercontent.com/78174997/168424141-1c65c562-f3f6-44b6-9143-e4ffb0ed75d4.png" width="500" height="270"/>
 
+---
+
+## Used Technologies
+
+* [Java](https://openjdk.java.net/) - Programming Language;
+
+---
+
+## References
+
+- [Some ref](someref)
+
+---
+
+## Authors
+
+* **André Proença** - [GitHub](https://github.com/AndreProenza)
+* **Eduardo Noranha** - [GitHub]()
 
 ---
