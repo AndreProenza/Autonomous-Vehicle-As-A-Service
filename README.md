@@ -16,10 +16,10 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 
 | Concept                          | Definition                
 |:--------------------------------:|:---------------------------------
-|Autonomous Vehicle (AV)           | are cars that employ sensor, computer, machine learning, or artificial intelligence (AI)-based systems to support automated driving decisions regarding steering, changes in speeds, and monitoring the environment. 
-|Auto Pilot (APILOT)               | a subset of an AV, including only the machine learning, or artificial intelligence (AI)-based systems to support automated driving decisions regarding steering, changes in speeds, and monitoring the environment.
-|Car manufacturer                  | a company that produces a pre-installed AV containing (a) sensors to monitor the environment, (b) computers providing processing power, and (c) steering and speed change capabilities provided to the computers. For example, Toyota, BMW, or other.
+|Autonomous Vehicle (AV)           | Are cars that employ sensor, computer, machine learning, or artificial intelligence (AI)-based systems to support automated driving decisions regarding steering, changes in speeds, and monitoring the environment. 
+|Auto Pilot (APILOT)               | A subset of an AV, including only the machine learning, or artificial intelligence (AI)-based systems to support automated driving decisions regarding steering, changes in speeds, and monitoring the environment.
+|Car manufacturer                  | A company that produces a pre-installed AV containing (a) sensors to monitor the environment, (b) computers providing processing power, and (c) steering and speed change capabilities provided to the computers. For example, Toyota, BMW, or other.
 |APILOT developer                  |  company that develops, and then, provides the APILOT service to be deployed in a preinstalled AV. For example, Waymo, Aurora, or other.
-|External service provider         | a company providing specialized additional services that are mandatory to offer IQ, EQ and AQ.
-|AVaaS user                        | the customer of AVaaS that uses the AVaaS provided services
-|AVaaS Employee                    | internal AVaaS resource that oversees AVaaS’ business processes management and execution.
+|External service provider         | A company providing specialized additional services that are mandatory to offer IQ, EQ and AQ.
+|AVaaS user                        | The customer of AVaaS that uses the AVaaS provided services
+|AVaaS Employee                    | Internal AVaaS resource that oversees AVaaS’ business processes management and execution.
