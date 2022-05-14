@@ -20,9 +20,10 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 3. [Participants](#participants)
 4. [System of Interest](#system-of-interest)
 5. [Use Cases](#use-cases)
-6. [Used Technologies](#used-technologies)
-7. [References](#references)
-8. [Authors](#authors)
+6. [AVaaS Structure](#avaas-structure)
+7. [Used Technologies](#used-technologies)
+8. [References](#references)
+9. [Authors](#authors)
 
 ---
 
@@ -113,9 +114,21 @@ the high-level events that can produce IQ, EQ an AQ events. For that end, extern
 
 ---
 
+## AVaaS Structure
+
+The technological components included in AVaaS system of interest are the following. 
+
+![image](https://user-images.githubusercontent.com/78174997/168424944-61871db5-28dd-458b-b1e1-a72142493b3e.png)
+
+---
+
 ## Used Technologies
 
 * [Java](https://openjdk.java.net/) - Programming Language;
+* [Apache Kafka](https://kafka.apache.org/) - Distributed Event Streaming Platform; Data Integration;
+* [Docker](https://www.docker.com/) - Containerization Platform;
+* [Quarkus](https://quarkus.io/) - Kubernetes Native Java stack;
+* [Camunda](https://camunda.com/) - Java-based framework process engine;  Workflow and Decision Automation Platform;
 
 ---
 
