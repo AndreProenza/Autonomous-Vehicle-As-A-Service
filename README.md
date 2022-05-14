@@ -141,6 +141,6 @@ The technological components included in AVaaS system of interest are the follow
 ## Authors
 
 * **André Proença** - [GitHub](https://github.com/AndreProenza)
-* **Eduardo Noronha** - [GitHub]()
+* **Eduardo Noronha** - [GitHub](https://github.com/edunoronha633)
 
 ---
