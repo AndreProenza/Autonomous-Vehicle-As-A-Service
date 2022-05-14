@@ -10,7 +10,8 @@ In this sense, AVaaS do not perform auto pilot functions, such as driving a car 
 IQ, EQ and AQ value added services to customers. The autonomous driving capabilities are usually deployed locally
 in the cars, while AVaaS are extended capabilities that could be deployed in the cloud (or hybrid environments).
 
-<img src="https://user-images.githubusercontent.com/78174997/168272522-a4e064a5-9b09-400f-9906-d9615e6c68ef.jpg" width="760" height="370"/>
+<img src="https://user-images.githubusercontent.com/78174997/168272522-a4e064a5-9b09-400f-9906-d9615e6c68ef.jpg">
+
 
 ## Core concepts 
 
