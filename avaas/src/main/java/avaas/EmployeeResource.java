@@ -51,9 +51,9 @@ public class EmployeeResource {
 				.onItem().transform(status -> Response.status(status).build());
 	}
 	@PUT
-	@Path("/responsible/{userId}/{responsible}")
-	public Uni<Response> updateResponsible(@Param Integer userId , @Param String responsible) {
-		return Employee.updateResponsible(client, userId , responsible)
+	@Path("/role/{userId}/{role}")
+	public Uni<Response> updateRole(@Param Integer userId , @Param String role) {
+		return Employee.updateRole(client, userId , role)
 				.onItem().transform(updated -> updated ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
