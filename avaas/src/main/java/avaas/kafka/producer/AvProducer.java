@@ -6,6 +6,9 @@ import org.eclipse.microprofile.reactive.messaging.Emitter;
 
 import avaas.repository.Av;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -16,6 +19,9 @@ public class AvProducer {
     Emitter<Record<Integer, String>> emitter;
 
     public void sendAvToKafka(Av av) {
-        emitter.send(Record.of(av.id, av.brand));
+    	List<String> brandAndModel = new ArrayList<>();
+    	brandAndModel.add(av.brand);
+    	brandAndModel.add(av.model);
+        emitter.send(Record.of(av.id, brandAndModel.toString()));
     }
 }
