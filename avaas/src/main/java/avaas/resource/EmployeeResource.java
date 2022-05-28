@@ -1,4 +1,4 @@
-package avaas;
+package avaas.resource;
 
 import java.net.URI;
 
@@ -14,55 +14,49 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.logging.annotations.Param;
 
+import avaas.repository.Employee;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
-@Path("user")
-public class UserResource {
+@Path("employee")
+public class EmployeeResource {
 	
 	@Inject
 	io.vertx.mutiny.mysqlclient.MySQLPool client;
 	
 	@GET
 	@Path("/all")
-	public Multi<User> get() {
-		return User.findAll(client);
+	public Multi<Employee> get() {
+		return Employee.findAll(client);
 	}
 	
 	@GET
-	@Path("{id}")
-	public Uni<Response> getSingle(@Param Integer id) {
-		return User.findById(client, id)
-				.onItem().transform(user -> user != null ? Response.ok(user) :
+	@Path("{userId}")
+	public Uni<Response> getSingle(@Param Integer userId) {
+		return Employee.findById(client, userId)
+				.onItem().transform(employee -> employee != null ? Response.ok(employee) :
 					Response.status(Status.NOT_FOUND))
 				.onItem().transform(ResponseBuilder::build);
 	}
 	@POST
-	public Uni<Response> create(User user) {
-		return user.save(client)
-				.onItem().transform(id -> URI.create("/user/" + id))
+	public Uni<Response> create(Employee employee) {
+		return employee.save(client)
+				.onItem().transform(userId -> URI.create("/employee/" + userId))
 				.onItem().transform(uri -> Response.created(uri).build());
 	}
 	@DELETE
-	@Path("{id}")
-	public Uni<Response> delete(@Param Integer id) {
-		return User.delete(client, id)
+	@Path("{userId}")
+	public Uni<Response> delete(@Param Integer userId) {
+		return Employee.delete(client, userId)
 				.onItem().transform(deleted -> deleted ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
 	@PUT
-	@Path("/name/{id}/{name}")
-	public Uni<Response> updateBrand(@Param Integer id , @Param String name) {
-		return User.updateName(client, id , name)
+	@Path("/role/{userId}/{role}")
+	public Uni<Response> updateRole(@Param Integer userId , @Param String role) {
+		return Employee.updateRole(client, userId , role)
 				.onItem().transform(updated -> updated ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
 	
-	@PUT
-	@Path("/age/{id}/{age}")
-	public Uni<Response> updateModel(@Param Integer id , @Param int age) {
-		return User.updateAge(client, id , age)
-				.onItem().transform(updated -> updated ? Status.NO_CONTENT : Status.NOT_FOUND)
-				.onItem().transform(status -> Response.status(status).build());
-	}
 }

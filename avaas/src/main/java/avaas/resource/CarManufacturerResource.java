@@ -1,4 +1,4 @@
-package avaas;
+package avaas.resource;
 
 import java.net.URI;
 
@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.logging.annotations.Param;
 
+import avaas.repository.CarManufacturer;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 

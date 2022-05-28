@@ -1,4 +1,4 @@
-package avaas;
+package avaas.resource;
 
 import java.net.URI;
 
@@ -14,54 +14,55 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.logging.annotations.Param;
 
+import avaas.repository.User;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
-@Path("av")
-public class AvResource {
+@Path("user")
+public class UserResource {
 	
 	@Inject
 	io.vertx.mutiny.mysqlclient.MySQLPool client;
 	
 	@GET
 	@Path("/all")
-	public Multi<Av> get() {
-		return Av.findAll(client);
+	public Multi<User> get() {
+		return User.findAll(client);
 	}
 	
 	@GET
 	@Path("{id}")
 	public Uni<Response> getSingle(@Param Integer id) {
-		return Av.findById(client, id)
-				.onItem().transform(av -> av != null ? Response.ok(av) :
+		return User.findById(client, id)
+				.onItem().transform(user -> user != null ? Response.ok(user) :
 					Response.status(Status.NOT_FOUND))
 				.onItem().transform(ResponseBuilder::build);
 	}
 	@POST
-	public Uni<Response> create(Av av) {
-		return av.save(client)
-				.onItem().transform(id -> URI.create("/av/" + id))
+	public Uni<Response> create(User user) {
+		return user.save(client)
+				.onItem().transform(id -> URI.create("/user/" + id))
 				.onItem().transform(uri -> Response.created(uri).build());
 	}
 	@DELETE
 	@Path("{id}")
 	public Uni<Response> delete(@Param Integer id) {
-		return Av.delete(client, id)
+		return User.delete(client, id)
 				.onItem().transform(deleted -> deleted ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
 	@PUT
-	@Path("/brand/{id}/{brand}")
-	public Uni<Response> updateBrand(@Param Integer id , @Param String brand) {
-		return Av.updateBrand(client, id , brand)
+	@Path("/name/{id}/{name}")
+	public Uni<Response> updateBrand(@Param Integer id , @Param String name) {
+		return User.updateName(client, id , name)
 				.onItem().transform(updated -> updated ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
 	
 	@PUT
-	@Path("/model/{id}/{model}")
-	public Uni<Response> updateModel(@Param Integer id , @Param String model) {
-		return Av.updateModel(client, id , model)
+	@Path("/age/{id}/{age}")
+	public Uni<Response> updateModel(@Param Integer id , @Param int age) {
+		return User.updateAge(client, id , age)
 				.onItem().transform(updated -> updated ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
