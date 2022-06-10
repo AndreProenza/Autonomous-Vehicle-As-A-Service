@@ -4,7 +4,7 @@ import io.smallrye.reactive.messaging.kafka.Record;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 
-import avaas.repository.Av;
+import avaas.reactive.repository.Av;
 
 import java.util.ArrayList;
 import java.util.List;

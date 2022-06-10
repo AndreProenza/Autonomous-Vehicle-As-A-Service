@@ -1,4 +1,4 @@
-package avaas.repository;
+package avaas.reactive.repository;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;

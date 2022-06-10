@@ -1,4 +1,4 @@
-package avaas.repository;
+package avaas.reactive.repository;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
@@ -24,6 +24,32 @@ public class APilot {
 		this.model = model;
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
 	private static APilot from(Row row) {
 		return new APilot(row.getInteger("id"), row.getString("brand"), row.getString("model"));
 	}

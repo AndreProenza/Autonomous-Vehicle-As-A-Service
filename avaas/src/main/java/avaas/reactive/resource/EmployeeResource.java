@@ -1,4 +1,4 @@
-package avaas.resource;
+package avaas.reactive.resource;
 
 import java.net.URI;
 
@@ -14,50 +14,47 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.logging.annotations.Param;
 
-import avaas.repository.CarManufacturer;
+import avaas.reactive.repository.Employee;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
-@Path("car_manufacturer")
-public class CarManufacturerResource {
+@Path("employee")
+public class EmployeeResource {
 	
 	@Inject
 	io.vertx.mutiny.mysqlclient.MySQLPool client;
 	
 	@GET
 	@Path("/all")
-	public Multi<CarManufacturer> get() {
-		return CarManufacturer.findAll(client);
+	public Multi<Employee> get() {
+		return Employee.findAll(client);
 	}
 	
 	@GET
-	@Path("{brand}")
-	public Uni<Response> getSingle(@Param String brand) {
-		return CarManufacturer.findById(client, brand)
-				.onItem().transform(carManufacturer -> carManufacturer != null ? Response.ok(carManufacturer) :
+	@Path("{userId}")
+	public Uni<Response> getSingle(@Param Integer userId) {
+		return Employee.findById(client, userId)
+				.onItem().transform(employee -> employee != null ? Response.ok(employee) :
 					Response.status(Status.NOT_FOUND))
 				.onItem().transform(ResponseBuilder::build);
 	}
-	
 	@POST
-	public Uni<Response> create(CarManufacturer carManufacturer) {
-		return carManufacturer.save(client)
-				.onItem().transform(brand -> URI.create("/car_manufacturer/" + brand))
+	public Uni<Response> create(Employee employee) {
+		return employee.save(client)
+				.onItem().transform(userId -> URI.create("/employee/" + userId))
 				.onItem().transform(uri -> Response.created(uri).build());
 	}
-	
 	@DELETE
-	@Path("{brand}")
-	public Uni<Response> delete(@Param String brand) {
-		return CarManufacturer.delete(client, brand)
+	@Path("{userId}")
+	public Uni<Response> delete(@Param Integer userId) {
+		return Employee.delete(client, userId)
 				.onItem().transform(deleted -> deleted ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}
-	
-	//@PUT
-	//@Path("/{brand}")
-	public Uni<Response> updateBrand(@Param String brand) {
-		return CarManufacturer.updateBrand(client, brand)
+	@PUT
+	@Path("/role/{userId}/{role}")
+	public Uni<Response> updateRole(@Param Integer userId , @Param String role) {
+		return Employee.updateRole(client, userId , role)
 				.onItem().transform(updated -> updated ? Status.NO_CONTENT : Status.NOT_FOUND)
 				.onItem().transform(status -> Response.status(status).build());
 	}

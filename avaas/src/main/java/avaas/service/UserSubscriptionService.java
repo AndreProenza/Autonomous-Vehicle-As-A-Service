@@ -1,20 +1,18 @@
 package avaas.service;
 
 import java.net.URI;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.jboss.logging.annotations.Param;
 
-import avaas.repository.PurchaseInfo;
-import avaas.repository.User;
+//import avaas.jdbc.model.PurchaseInfo;
+//import avaas.jdbc.service.PurchaseInfoService;
+import avaas.reactive.repository.User;
 import io.smallrye.mutiny.Uni;
 
 @Path("subscription")
@@ -23,7 +21,12 @@ public class UserSubscriptionService {
 	@Inject
 	io.vertx.mutiny.mysqlclient.MySQLPool client;
 	
-	private static final AtomicInteger count = new AtomicInteger(5);
+//	private final PurchaseInfoService purchaseInfoService;
+//
+//    @Inject
+//    public UserSubscriptionService(PurchaseInfoService purchaseInfoService) {
+//        this.purchaseInfoService = purchaseInfoService;
+//    }
 	
 	@POST
 	@Path("/subscribe/user")
@@ -37,22 +40,13 @@ public class UserSubscriptionService {
 			return Uni.createFrom().item(() -> Response.status(Response.Status.ACCEPTED).entity(msg).build());
 		}
 		
-		PurchaseInfo purchaseInfo = new PurchaseInfo(count.incrementAndGet(), user.getId(), 0, 0);
-		System.out.println(purchaseInfo);
-		setupUserPurchaseInfo(purchaseInfo);
-		
 		
 		return user.save(client)
 				.onItem().transform(id -> URI.create("/subscription/subscribe/user/" + id))
-				.onItem().transform(uri -> Response.created(uri).build());
-//				.onFailure().recoverWithUni(Uni.createFrom().item(() 
-//						-> Response.status(Response.Status.ACCEPTED)
-//						.entity("User already exists. subscribe another user id").build()));
-	}
-	
-	private Uni<Boolean> setupUserPurchaseInfo(PurchaseInfo purchaseInfo) {
-		System.out.println("######## Entrei ##########");
-		return purchaseInfo.save(client);
+				.onItem().transform(uri -> Response.created(uri).build())
+				.onFailure().recoverWithUni(Uni.createFrom().item(() 
+						-> Response.status(Response.Status.ACCEPTED)
+						.entity("User already exists. subscribe another user id").build()));
 	}
 	
 	
@@ -71,10 +65,10 @@ public class UserSubscriptionService {
 				user.age > 18 && user.getAge() <= 120;		
 	}
 	
-	private Uni<Response> getUser(Integer id) {
-		return User.findById(client, id)
-				.onItem().transform(user -> user != null ? Response.ok(user) :
-					Response.status(Status.NOT_FOUND))
-				.onItem().transform(ResponseBuilder::build);
-	}
+//	private Uni<Response> getUser(Integer id) {
+//		return User.findById(client, id)
+//				.onItem().transform(user -> user != null ? Response.ok(user) :
+//					Response.status(Status.NOT_FOUND))
+//				.onItem().transform(ResponseBuilder::build);
+//	}
 }

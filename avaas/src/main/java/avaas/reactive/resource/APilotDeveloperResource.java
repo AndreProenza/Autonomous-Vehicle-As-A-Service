@@ -1,4 +1,4 @@
-package avaas.resource;
+package avaas.reactive.resource;
 
 import java.net.URI;
 
@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.logging.annotations.Param;
 
-import avaas.repository.APilotDeveloper;
+import avaas.reactive.repository.APilotDeveloper;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 

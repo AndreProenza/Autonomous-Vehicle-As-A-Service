@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import avaas.kafka.producer.AvProducer;
-import avaas.repository.Av;
+import avaas.reactive.repository.Av;
 
 @Path("kafka/produce/av")
 @Consumes(MediaType.APPLICATION_JSON)

@@ -1,4 +1,4 @@
-package avaas.repository;
+package avaas.reactive.repository;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
@@ -11,14 +11,14 @@ public class PurchaseInfo {
 	
 	public int id;
 	public int userId;
-	public int avId;
-	public int apilotId; 
+	public Integer avId;
+	public Integer apilotId; 
 	
 	public PurchaseInfo() {
 		//Does nothing
 	}
 	
-	public PurchaseInfo(int id, int userId, int avId, int apilotId) {
+	public PurchaseInfo(int id, int userId, Integer avId, Integer apilotId) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -35,11 +35,11 @@ public class PurchaseInfo {
 		return userId;
 	}
 
-	public int getAvId() {
+	public Integer getAvId() {
 		return avId;
 	}
 
-	public int getApilotId() {
+	public Integer getApilotId() {
 		return apilotId;
 	}
 	
@@ -52,11 +52,11 @@ public class PurchaseInfo {
 		this.userId = userId;
 	}
 
-	public void setAvId(int avId) {
+	public void setAvId(Integer avId) {
 		this.avId = avId;
 	}
 
-	public void setApilotId(int apilotId) {
+	public void setApilotId(Integer apilotId) {
 		this.apilotId = apilotId;
 	}
 
@@ -85,7 +85,7 @@ public class PurchaseInfo {
 	
 	
 	public Uni<Boolean> save(MySQLPool client) {
-		return client.preparedQuery("INSERT INTO purchase_info(id, user_id, av_id, apilot_id) VALUES (?, ?, ?, ?)").execute(Tuple.of(id, userId, avId, apilotId)).onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1);
+		return client.preparedQuery("INSERT INTO purchase_info(id, user_id, av_id, apilot_id) VALUES (?, ?, ?, ?)").execute(Tuple.of(id, userId, avId, 0)).onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1);
 	}
 	
 	
@@ -103,9 +103,19 @@ public class PurchaseInfo {
 						.onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1 );
 	}
 	
+	public static Uni<Boolean> sellAV(MySQLPool client, Integer id) {
+		return client.preparedQuery("UPDATE purchase_info SET av_id = NULL WHERE id = ?").execute(Tuple.of(id))
+						.onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1 );
+	}
 	
-	public static Uni<Boolean> updateAPilot(MySQLPool client, Integer id, Integer apilotId) {
+	
+	public static Uni<Boolean> selectAPilot(MySQLPool client, Integer id, Integer apilotId) {
 		return client.preparedQuery("UPDATE purchase_info SET apilot_id = ? WHERE id = ?").execute(Tuple.of(apilotId,id))
+						.onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1 );
+	}
+	
+	public static Uni<Boolean> unselectAPilot(MySQLPool client, Integer id) {
+		return client.preparedQuery("UPDATE purchase_info SET apilot_id = NULL WHERE id = ?").execute(Tuple.of(id))
 						.onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1 );
 	}
 
