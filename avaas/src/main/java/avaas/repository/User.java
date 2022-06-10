@@ -24,6 +24,24 @@ public class User {
 		this.age = age;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "User [id = " + id + ", name = " + name + ", age = " + age + "]";
+	}
+
 	private static User from(Row row) {
 		return new User(row.getInteger("id"), row.getString("name"), row.getInteger("age"));
 	}

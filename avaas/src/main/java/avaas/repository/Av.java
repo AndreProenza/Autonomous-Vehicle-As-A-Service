@@ -24,6 +24,25 @@ public class Av {
 		this.model = model;
 	}
 	
+	
+	public int getId() {
+		return id;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public String getModel() {
+		return model;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "Av [id = " + id + ", brand = " + brand + ", model = " + model + "]";
+	}
+
 	private static Av from(Row row) {
 		return new Av(row.getInteger("id"), row.getString("brand"), row.getString("model"));
 	}
