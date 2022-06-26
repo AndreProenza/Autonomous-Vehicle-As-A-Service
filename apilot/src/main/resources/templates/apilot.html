@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="/CSS/style.css">
+
+    <title>APilot UI</title>
+  </head>
+    <body>
+
+	
+		<header class="header">
+        <div>
+			<h1>Auto Pilot User Interface </h1>
+        </div>
+    </header>
+
+    <div class="d-lg-flex half">
+      <div class="bg order-1 order-md-2" style="background-image: url('/IMAGES/apilot.jpg');"></div>
+      
+      <div class="contents order-2 order-md-1">
+        
+        <div class="container container-register">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7">
+              <h3 class="title-top">Auto Pilot Advices</h3>
+              	<p>Advice Time</p>
+				<div class="form-group last mb-3">
+                    <label for="timeStamp" th:text="${apilot.timeStamp}"></label>
+                </div>
+                <p>Autonomous Vehicle Id</p>
+				<div class="form-group last mb-3">
+                    <label for="avId" th:text="${apilot.avId}"></label>
+                </div>
+                <p>Current Speed</p>
+				<div class="form-group last mb-3">
+                    <label for="speed" th:text="${apilot.speed}"></label>
+                </div>
+                <p>Apply Brakes</p>
+				<div class="form-group last mb-3">
+                    <label for="applyBrakes" th:text="${apilot.applyBrakes}"></label>
+                </div>
+                <p>Battery Level</p>
+				<div class="form-group last mb-3">
+                    <label for="batteryLevel" th:text="${apilot.batteryLevel}"></label>
+                </div>
+                <p>Charge Car</p>
+				<div class="form-group last mb-3">
+                    <label for="chargeCar" th:text="${apilot.chargeCar}"></label>
+                </div>
+                <p>Driver Tireness Level</p>
+				<div class="form-group last mb-3">
+                    <label for="driverTirenessLevel" th:text="${apilot.driverTirenessLevel}"></label>
+                </div>
+                <p>Take a Rest</p>
+				<div class="form-group last mb-3">
+                    <label for="takeRest" th:text="${apilot.takeRest}"></label>
+                </div>
+                <p>Location</p>
+				<div class="form-group last mb-3">
+                    <label for="location" th:text="${apilot.location}"></label>
+                </div>
+                <p>Dangerous Zone</p>
+				<div class="form-group last mb-3">
+                    <label for="dangerous" th:text="${apilot.dangerous}"></label>
+                </div>
+                <p>Environmental Lightning</p>
+				<div class="form-group last mb-3">
+                    <label for="environmentalLightning" th:text="${apilot.environmentalLightning}"></label>
+                </div>
+                <p>Space Visualization</p>
+				<div class="form-group last mb-3">
+                    <label for="spaceVisualization" th:text="${apilot.spaceVisualization}"></label>
+                </div>
+                 <p>Rain Conditions</p>
+				<div class="form-group last mb-3">
+                    <label for="rainConditions" th:text="${apilot.rainConditions}"></label>
+                </div>
+                 <p>Fog Conditions</p>
+				<div class="form-group last mb-3">
+                    <label for="fogConditions" th:text="${apilot.fogConditions}"></label>
+                </div>
+                 <p>Weather Status</p>
+				<div class="form-group last mb-3">
+                    <label for="weatherStatus" th:text="${apilot.weatherStatus}"></label>
+                </div>
+                <p>Traction Wheels Level</p>
+				<div class="form-group last mb-3">
+                    <label for="tractionWheelsLevel" th:text="${apilot.tractionWheelsLevel}"></label>
+                </div>
+                <p>Autonomous Vehicle Status</p>
+				<div class="form-group last mb-3">
+                    <label for="avStatus" th:text="${apilot.avStatus}"></label>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="/CSS/style.css">
+
+    <title>AV Result UI</title>
+  </head>
+    <body>
+
+	
+		<header class="header">
+        <div>
+			<h1>AV Result User Interface </h1>
+        </div>
+    </header>
+
+    <div class="d-lg-flex half">
+      <div class="bg order-1 order-md-2" style="background-image: url('/IMAGES/apilot.jpg');"></div>
+      
+      <div class="contents order-2 order-md-1">
+        
+        <div class="container container-register">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7">
+              <h3 class="title-top">Auto Pilot Advices</h3>
+              	<p>Advice Time</p>
+				<div class="form-group last mb-3">
+                    <label for="timeStamp" th:text="${avResult.timeStamp}"></label>
+                </div>
+                <p>Autonomous Vehicle Id</p>
+				<div class="form-group last mb-3">
+                    <label for="avId" th:text="${avResult.avId}"></label>
+                </div>
+                <p>Current Speed</p>
+				<div class="form-group last mb-3">
+                    <label for="speed" th:text="${avResult.speed}"></label>
+                </div>
+                <br>
+                <h3 class="title-top">IQ, EQ and AQ Status</h3>
+                <p>ICT Infrastructure</p>
+				<div class="form-group last mb-3">
+                    <label for="ictInfrastructure" th:text="${avResult.ictInfrastructure}"></label>
+                </div>
+                <p>Road Conditions</p>
+				<div class="form-group last mb-3">
+                    <label for="roadConditions" th:text="${avResult.roadConditions}"></label>
+                </div>
+                <p>Utilitarism</p>
+				<div class="form-group last mb-3">
+                    <label for="utilitarism" th:text="${avResult.utilitarism}"></label>
+                </div>
+                <p>Legitimacy</p>
+				<div class="form-group last mb-3">
+                    <label for="legitimacy" th:text="${avResult.legitimacy}"></label>
+                </div>
+                <p>Social Responsability</p>
+				<div class="form-group last mb-3">
+                    <label for="socialResponsability" th:text="${avResult.socialResponsability}"></label>
+                </div>
+                <p>Identification</p>
+				<div class="form-group last mb-3">
+                    <label for="identification" th:text="${avResult.identification}"></label>
+                </div>
+                <p>Risk Analysis</p>
+				<div class="form-group last mb-3">
+                    <label for="riskAnalysis" th:text="${avResult.riskAnalysis}"></label>
+                </div>
+                <p>Reaction</p>
+				<div class="form-group last mb-3">
+                    <label for="reaction" th:text="${avResult.reaction}"></label>
+                </div>
+                <p>Execution</p>
+				<div class="form-group last mb-3">
+                    <label for="execution" th:text="${avResult.execution}"></label>
+                </div>
+                
+              <!--
+              <h4 class="position">Advice Time: <span th:text="${avResult.timeStamp}"></span></h4>
+              <h4 class="position">Autonomous Vehicle Id: <span th:text="${avResult.avId}"></span></h4>
+              <h4 class="position">Current Speed: <span th:text="${avResult.speed}"></span></h4>
+              <br>
+              <h3 class="title-top">IQ, EQ and AQ Status</h3>
+              <h4 class="position">ICT Infrastructure: <span th:text="${avResult.ictInfrastructure}"></span></h4>
+              <h4 class="position">Road Conditions: <span th:text="${avResult.roadConditions}"></span></h4>
+              <h4 class="position">Utilitarism: <span th:text="${avResult.utilitarism}"></span></h4>
+              <h4 class="position">Legitimacy: <span th:text="${avResult.legitimacy}"></span></h4>
+              <h4 class="position">Social Responsability: <span th:text="${avResult.socialResponsability}"></span></h4>
+              <h4 class="position">Identification: <span th:text="${avResult.identification}"></span></h4>
+              <h4 class="position">Risk Analysis: <span th:text="${avResult.riskAnalysis}"></span></h4>
+              <h4 class="position">Reaction: <span th:text="${avResult.reaction}"></span></h4>
+              <h4 class="position">Execution: <span th:text="${avResult.execution}"></span></h4>
+              -->
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
