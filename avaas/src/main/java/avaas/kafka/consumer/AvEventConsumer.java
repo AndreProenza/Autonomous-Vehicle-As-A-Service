@@ -29,6 +29,8 @@ public class AvEventConsumer {
 
 		logger.infof("Consumed an AV_Event: Id = " +  record.key() + " Value =  " + record.value());
 		
+		System.out.println ("----------------------------------------\n");
+		
 		processAvEventMessage(record.value());
 
 		AvEvents avEvents = new AvEvents(timeStamp, avId, speed, batteryLevel, driverTirenessLevel, location, 
@@ -37,7 +39,7 @@ public class AvEventConsumer {
 		
 		APilotProducer.processAPilotFunctionality(avEvents);
 		
-		System.out.println ("----------------------------------------");
+		System.out.println ("----------------------------------------\n");
 	}
 	
 		

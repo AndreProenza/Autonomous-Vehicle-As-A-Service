@@ -20,14 +20,16 @@ public class APilotConsumer {
 
 		System.out.println ("-------- APilot Consume message --------");
 
-		logger.infof("Consumed an APilot: Id = " + record.key() + " Value = " + record.value().toString());    		
+		logger.infof("Consumed an APilot: Id = " + record.key() + " Value = " + record.value()); 
+		
+		System.out.println ("----------------------------------------\n");
 
 		APilot apilot = getAPilotFromMessage(record.value());
 
 		//Produce AV Result
 		AvResultProducer.MediationToIQEQAQ(apilot);
 
-		System.out.println ("----------------------------------------");
+		System.out.println ("----------------------------------------\n");
 	}
 
 	private APilot getAPilotFromMessage(String msg) {

@@ -7,6 +7,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import avaas.kafka.model.APilot;
 import avaas.kafka.model.AvResult;
+import avaas.openweathermap.OpenWeatherMapAPI;
 
 public class AvResultProducer {
 
@@ -40,6 +41,47 @@ public class AvResultProducer {
 	public static void MediationToIQEQAQ(APilot apilot) {
 
 		AvResult avResult = new AvResult();
+
+		String location = apilot.getLocation();
+		if(!location.equals("Unknown")) {
+
+			String[] coord = location.split(" ");
+			String latitude = coord[0];
+			String longitude = coord[1];
+			
+			System.out.println ("________ Consuming Open Weather Map API ________");
+			
+			System.out.println("AV Location: " + apilot.getLocation());
+			
+			System.out.println("Latitude: " + latitude);
+			System.out.println("Latitude: " + longitude);
+
+			//Get Weather data given the av location
+			String weatherData = OpenWeatherMapAPI
+					.processWeatherData(OpenWeatherMapAPI.getWeatherData(latitude, longitude));
+			
+			String[] msgArray = weatherData.split(",");
+			String mainWeather = msgArray[0];
+			String description = msgArray[1];
+			
+			System.out.println("Group of weather parameters: " + mainWeather);
+			System.out.println("Weather condition within the group: " + description);
+			
+			if(mainWeather.equals("Clouds") || description.equals("broken clouds")) {
+				apilot.setWeatherStatus("Bad");
+			}
+			System.out.println ("________________________________________________\n");
+		}
+		else {
+			System.out.println ("________ Consuming Open Weather Map API ________");
+			
+			System.out.println("AV Location: " + apilot.getLocation());
+			System.out.println("Impossible to consume weather from an unknown location");
+			
+			System.out.println ("________________________________________________\n");
+		}
+
+
 
 		avResult.setTimeStamp(apilot.getTimeStamp());
 		avResult.setAvId(apilot.getAvId());
@@ -104,11 +146,13 @@ public class AvResultProducer {
 		} else {
 			avResult.setExecution("May Continue");
 		}
-		
-		System.out.println(avResult.toString());
+
+		//		System.out.println(avResult.toString());
 
 		produceMessage(avResult.toString());
 	}
+
+
 
 }
 
