@@ -489,6 +489,87 @@ Open your browser at the following url:
 
 ---
 
+## Get Started
+
+To immediately start testing the project on your local machine, (Not recommended before reading the documentation), execute the following steps:
+
+
+### Run Kafka
+
+Open a terminal and run:
+```code
+# Start the ZooKeeper service
+# Note: Soon, ZooKeeper will no longer be required by Apache Kafka.
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+Open another terminal and run:
+```code
+# Start the Kafka broker service
+$ bin/kafka-server-start.sh config/server.properties
+```
+
+### Create Kafka Topics
+
+Open another terminal and type the following instructions:
+
+Create the `av-event` by running:
+```code
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --
+partitions 1 --topic av-event
+```
+
+Create the `apilot` by running:
+```code
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --
+partitions 1 --topic apilot
+```
+
+Create the `av-result` by running:
+```code
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --
+partitions 1 --topic av-result
+```
+
+### Run Quarkus AVaaS System
+
+Open another terminal and type:
+
+Run the AVaaS system:
+```code
+./mvnw quarkus:dev
+```
+
+### Run The Producer Tool
+
+Open another terminal and type:
+
+Find the jar `AVaaSSimulator.jar` located in the `avaas/` folder and run:
+```code
+$ java -jar AVaaSSimulator.jar --broker-list localhost:9092 --throughput 3 --typeMessage 
+JSON
+```
+
+### Run APilot GUI
+
+The source code is located in the `apilot/` folder.
+
+Run the apilot GUI:
+```code
+mvn spring-boot:run
+```
+
+Open your browser at the following url:
+[localhost:5000/avresult/ui](http://localhost:5000/avresult/ui)
+
+
+Open your another browser tab at the following url:
+[localhost:5000/apilot/ui](http://localhost:5000/apilot/ui)
+
+##### Refresh the page to consume other messages from the topics.
+
+---
+
 ## BPMN Files
 
 We develop the `BPMN` files for each of the use cases. You can check them in the folder 
