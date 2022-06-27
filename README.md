@@ -25,12 +25,13 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 8. [CRUD Implementation](#crud-implementation)
 9. [Use Cases Implementation](#use-cases-implementation)
 10. [Kafka Implementation](#kafka-implementation)
-11. [BPMN Files](#bpmn-files)
-12. [Used Technologies](#used-technologies)
-13. [AVaaS API](#avaas-api)
-14. [Requirements](#requirements)
-15. [References](#references)
-16. [Authors](#authors)
+11. [Get Started](#get-started)
+12. [BPMN Files](#bpmn-files)
+13. [Used Technologies](#used-technologies)
+14. [AVaaS API](#avaas-api)
+15. [Requirements](#requirements)
+16. [References](#references)
+17. [Authors](#authors)
 
 ---
 
@@ -533,7 +534,7 @@ partitions 1 --topic av-result
 
 ### Run Quarkus AVaaS System
 
-Open another terminal and type:
+The source code is located in the `avaas/` folder. Open a terminal and type:
 
 Run the AVaaS system:
 ```code
@@ -542,7 +543,7 @@ Run the AVaaS system:
 
 ### Run The Producer Tool
 
-Open another terminal and type:
+Open a terminal and type:
 
 Find the jar `AVaaSSimulator.jar` located in the `avaas/` folder and run:
 ```code
@@ -553,6 +554,7 @@ JSON
 ### Run APilot GUI
 
 The source code is located in the `apilot/` folder.
+Open a terminal and type:
 
 Run the apilot GUI:
 ```code
