@@ -23,10 +23,12 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 6. [Architecture](#architecture)
 7. [Use Cases Sequence Diagrams](#use-cases-sequence-diagrams) 
 8. [CRUD Implementation](#crud-implementation)
-9. [Used Technologies](#used-technologies)
-10. [AVaaS API](#avaas-api)
-11. [References](#references)
-12. [Authors](#authors)
+9. [Use Cases Implementation](#use-cases-implementation)
+10. [BPMN Files](#bpmn-files)
+11. [Used Technologies](#used-technologies)
+12. [AVaaS API](#avaas-api)
+13. [References](#references)
+14. [Authors](#authors)
 
 ---
 
@@ -191,8 +193,59 @@ There you can test the following API resources:
 - Carmaker Resource (CRD)
 - Employee Resource (CRUD)
 - User Resource (CRUD)
+- Purchase Info Resource (R)  (will be explained ahead)
+- Av Kafka Resource (C)       (will be explained ahead)
 
-##### Note: We populated all the tables with some records. We suggest that before testing any CRUD operation, you first verify which records already exist in the tables. You can query all records in the AV table by following these instructions: Access the url above, hit "AV Resource", choose the operation "GET /av/all", hit "Try it out", and execute
+##### Note: We populated all the tables with some records. We suggest that before testing any CRUD operation, you first verify which records already exist in the tables. You can query all records in the AV table by following these instructions: For example, access the url above, hit "AV Resource", choose the operation "GET /av/all", hit "Try it out", and execute
+
+---
+
+## Use Cases Implementation
+
+We implemented the different use cases using REST endpoints that access the microservices of the AVaaS system. We assume that the "Employee" entity handles the users' requests, validates them, executes the API requests and responds to the client.
+
+We developed 4 microservices:
+
+- User Subscription Service
+- Car Manufacturer Service
+- APilot Developer Service
+- Purchase Service
+
+For the first use case, `User subscribing/unsubscribing to AVaaS`, we developed the 
+`User Subscription Service` which presents two endpoints, one for subscribing and the 
+other for unsubscribing users to the AVaaS system. The validations are performed by the 
+"Employee" entity, which interacts with the AVaaS system
+
+For the second and third use cases, `Car manufacturer entering/removing/updating to 
+AVaaS catalog` and `APILOT developer entering/removing/updating to AVaaS catalog`, 
+we developed two services: `Car Manufacturer Service` and `APilot Developer Service` in 
+which, each of them presents three endpoints, one that inserts an AV, APilot into the 
+AVaaS system, another that removes the inserted AV, APilot, and another that modifies 
+the AV, APilot model that was inserted previously.
+
+For the third and fourth use cases, `User buying/selling a car` and `User 
+selecting/unselecting an APILOT to a car`, we developed a the `Purchase Service` 
+that presents four endpoints. Two endpoints are related to buying and selling an AV, the 
+other two are related to selecting and deselecting APilots. 
+
+Regarding the two endpoints related to `uying and selling an AV` one endpoint 
+associates a user to a given AV on the AVaaS system, representing the purchase of an AV, 
+the other removes an AV associated to a user, representing the sale of an AV. 
+
+Regarding the two endpoints related to the `election and deselection of APilots` one of 
+them assigns an APilot to a given user and AV, the other deselects an APilot from an AV 
+and user.
+
+To verify the application's functionality and test the microservices, please use
+`Swagger UI`in the url mentioned previously.
+
+
+---
+
+## BPMN Files
+
+We develop the `BPMN` files for each of the use cases. You can check them in the folder 
+`bpmn/`.
 
 ---
 
@@ -203,6 +256,7 @@ There you can test the following API resources:
 * [Docker](https://www.docker.com/) - Containerization Platform;
 * [Quarkus](https://quarkus.io/) - Kubernetes Native Java stack;
 * [Camunda](https://camunda.com/) - Java-based framework process engine;  Workflow and Decision Automation Platform;
+* [SpringBoot)(spring.io/projects/spring-boot) - Java-based Spring Framework to develop web application and microservices 
 
 ---
 
