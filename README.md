@@ -20,9 +20,13 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 3. [Participants](#participants)
 4. [System of Interest](#system-of-interest)
 5. [Use Cases](#use-cases)
-7. [Used Technologies](#used-technologies)
-8. [References](#references)
-9. [Authors](#authors)
+6. [Architecture](#architecture)
+7. [Use Cases Sequence Diagrams](#use-cases-sequence-diagrams) 
+8. [CRUD Implementation](#crud-implementation)
+9. [Used Technologies](#used-technologies)
+10. [AVaaS API](#avaas-api)
+11. [References](#references)
+12. [Authors](#authors)
 
 ---
 
@@ -113,6 +117,85 @@ the high-level events that can produce IQ, EQ an AQ events. For that end, extern
 
 ---
 
+## Architecture
+
+The following diagrams help to better understand the AVaaS system.
+
+In the diagram below you can view in detail the relationship between tables and their attributes.
+
+![image](https://user-images.githubusercontent.com/78174997/176013468-6c522b24-0afe-4a64-b1e7-72adec338663.png)
+
+---
+
+## Use Cases Sequence Diagrams 
+
+To better ilustrate our AVaaS implementation logic, we drew a sequence diagram for each use case. We present them below
+
+
+#### User subscribing/unsubscribing to AvaaS
+
+<img src="https://user-images.githubusercontent.com/78174997/176016429-4e0ead88-02ac-4be3-8fa5-50841501df33.png" width="520" height="300"/>
+
+
+#### Car manufacturer entering/removing/updating to AVaaS catalog
+
+<img src="https://user-images.githubusercontent.com/78174997/176017699-57b7b212-a133-4e12-9ad2-7c709cc8c7a7.png" width="520" height="200"/>
+
+
+#### APILOT developer entering/removing/updating to AVaaS catalog
+
+<img src="https://user-images.githubusercontent.com/78174997/176016583-1962ed1b-8c23-4759-a8ba-2c8dc44870ae.png" width="520" height="200"/>
+
+
+#### User buying/selling a car
+
+<img src="https://user-images.githubusercontent.com/78174997/176016610-22d4837c-d3eb-4037-950e-a043c0e8bc9b.png" width="520" height="300"/>
+
+
+#### User selecting/unselecting an APILOT to a car
+
+<img src="https://user-images.githubusercontent.com/78174997/176016646-31ea3895-0fc4-4c47-8ece-2c2440363d5d.png" width="520" height="300"/>
+
+
+#### IQ, EQ, AQ Autonomous driving
+
+<img src="https://user-images.githubusercontent.com/78174997/176017513-90758b1d-f8aa-4db7-93dc-8a13921bda04.png" width="520" height="300"/>
+
+---
+
+## CRUD Implementation
+
+We implemented the `CRUD` operations for each table shown above in the Architecture diagram.
+The implementation was supported by the `Quarkus Java framework`.
+The AVaaS system interacts with an already configured `MySQL AWS RDS` database.
+
+The source code is located in the `avaas/` folder.
+
+Run the AVaaS system:
+
+```code
+./mvnw quarkus:dev
+```
+
+To verify the application's functionality and test the `CRUD` operations, please use
+`Swagger UI` which allows to visualize and interact with the API’s resources.
+
+Access this url address: 
+
+[localhost:4080/q/swagger-ui/](https://localhost:4080/q/swagger-ui/)
+
+There you can test the following API resources:
+- APilot Resource (CRUD)
+- APilot Devloper Resource (CRD)
+- AV Resource (CRUD)
+- Carmaker Resource (CRD)
+- Employee Resource (CRUD)
+- User Resource (CRUD)
+
+##### Note: We populated all the tables with some records. We suggest that before testing any CRUD operation, you first verify which records already exist in the tables. You can query all records in the AV table by following these instructions: Access the url above, hit "AV Resource", choose the operation "GET /av/all", hit "Try it out", and execute
+
+---
+
 ## Used Technologies
 
 * [Java](https://openjdk.java.net/) - Programming Language;
@@ -123,9 +206,91 @@ the high-level events that can produce IQ, EQ an AQ events. For that end, extern
 
 ---
 
+## AVaaS API
+
+### Services
+
+ `User Subscription Service`
+  - POST /subscription/subscribe/user
+  - DELETE /subscription/unsubscribe/user/{id}
+  
+ `Car Manufacturer Service`
+  - POST /car_manufacturer_service/enter/av
+  - DELETE /car_manufacturer_service/remove/av/{id}
+  - PUT /car_manufacturer_service/update/av/model/{id}/{model}
+  
+ `A Pilot Developer Service`
+  - POST /apilot_service/enter/apilot
+  - DELETE /apilot_service/remove/apilot/{id}
+  - PUT /apilot_service/update/apilot/model/{id}/{model}
+  
+ `Purchase Service`
+  - PUT/ purchase_service/apilot/select/{id}/{apilotId}
+  - PUT/ purchase_service/apilot/unselect/{id}
+  - POST/ purchase_service/av/buy
+  - PUT/ purchase_service/av/sell/{id}
+  
+### Resources
+
+ `A Pilot Resource`
+  - POST /apilot
+  - GET /apilot/all
+  - PUT /apilot/brand/{id}/{brand}
+  - PUT /apilot/model/{id}/{model}
+  - GET /apilot/{id}
+  - DELETE /apilot/{id}
+
+ `A Pilot Developer Resource`
+  - POST /apilot_developer
+  - GET /apilot_developer/all
+  - GET /apilot_developer/{brand}
+  - DELETE /apilot_developer/{brand}
+  
+ `Av Resource`
+  - POST /av
+  - GET /av/all
+  - PUT /av/brand/{id}/{brand}
+  - PUT /av/model/{id}/{model}
+  - GET /av/{id}
+  - DELETE /av/{id}
+  
+  
+`Car Manufacturer Resource`
+  - POST /car_manufacturer
+  - GET /car_manufacturer/all
+  - GET /car_manufacturer/{brand}
+  - DELETE /car_manufacturer/{brand}
+
+ `Employee Resource`
+  - POST /employee
+  - GET /employee/all
+  - PUT /employee/role/{userId}/{role}
+  - GET /employee/{userId}
+  - DELETE /employee/{userId}
+
+ `Av Kafka Resource`
+  - POST /kafka/produce/av
+
+ `Purchase Info Resource`
+  - GET /purchase/all
+  - GET /purchase/{id}
+
+ `User Resource`
+  - POST /user
+  - PUT /user/age/{id}/{age}
+  - GET /user/all
+  - PUT /user/name/{id}/{name}
+  - GET /user/{id}
+  - DELETE /user/{id}
+
+---
+
 ## References
 
-- [Some ref](someref)
+- [Quarkus](https://quarkus.io/)
+- [Quarkus Datasources](https://quarkus.io/guides/datasource)
+- [Apache Kafka](https://kafka.apache.org/quickstart)
+- [Spring Boot](https://spring.io/projects/spring-boot)
 
 ---
 
