@@ -289,6 +289,28 @@ Access the url above, hit `Av Kafka Resource`, choose the operation `POST /kafka
   “model”: i8”
  }
 ```
+and execute.
+
+Check the application’s terminal. The data is being consumed by the application. It
+should appear something like this:
+```code
+Consumed an AV (Autonomous Vehicle): Id = 20 | Brand = BMW | Model = M1
+```
+
+You can run the same process via command line:
+```code
+curl -X 'POST' 'http://localhost:4080/kafka/produce/av' -H 'accept: /' -H
+'Content-Type: application/json' -d '{"id": 20,"brand": "BMW","model": "M1"}'
+```
+To test the producer and consumer mechanism with more data, we created a bash script
+`produceAVs.sh` which produces 10 AV's.
+
+Run:
+```code
+bash produceAVs.sh
+```
+Check the AV's being consumed in the application terminal
+
 ---
 
 ## BPMN Files
