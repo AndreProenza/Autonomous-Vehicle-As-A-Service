@@ -20,7 +20,6 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 3. [Participants](#participants)
 4. [System of Interest](#system-of-interest)
 5. [Use Cases](#use-cases)
-6. [AVaaS Structure](#avaas-structure)
 7. [Used Technologies](#used-technologies)
 8. [References](#references)
 9. [Authors](#authors)
@@ -111,14 +110,6 @@ developer.
 the high-level events that can produce IQ, EQ an AQ events. For that end, external services could be triggered
 
 <img src="https://user-images.githubusercontent.com/78174997/168424141-1c65c562-f3f6-44b6-9143-e4ffb0ed75d4.png" width="500" height="270"/>
-
----
-
-## AVaaS Structure
-
-The technological components included in AVaaS system of interest are the following. 
-
-![image](https://user-images.githubusercontent.com/78174997/168424944-61871db5-28dd-458b-b1e1-a72142493b3e.png)
 
 ---
 
