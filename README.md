@@ -28,8 +28,9 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 11. [BPMN Files](#bpmn-files)
 12. [Used Technologies](#used-technologies)
 13. [AVaaS API](#avaas-api)
-14. [References](#references)
-15. [Authors](#authors)
+14. [Requirements](#requirements)
+15. [References](#references)
+16. [Authors](#authors)
 
 ---
 
@@ -247,9 +248,8 @@ in `Kafka Implementation`
 
 ## Kafka Implementation
 
-To implement the AV producer and consumer high availability mechanism, we used the
-SmallRye Reactive Messaging framework supported by Quarkus which provides
-support for Apache Kafka.
+To simulate an `AV Manufacturer` introducing a new car model to the AVaaS system, we created an AV producer and consumer high availability mechanism. For that, we used the `SmallRye Reactive Messaging` framework supported by `Quarkus` which provides
+support for `Apache Kafka`.
 
 To execute this mechanism, a Kafka broker is required. To start it, first run locally
 zookeeper and kafka.
@@ -407,6 +407,11 @@ We develop the `BPMN` files for each of the use cases. You can check them in the
   - PUT /user/name/{id}/{name}
   - GET /user/{id}
   - DELETE /user/{id}
+
+---
+
+## Requirements
+- [Apache Kafka](https://kafka.apache.org/quickstart)
 
 ---
 
