@@ -455,8 +455,7 @@ the `IQ, EQ, AQ recommendations`:
 |Social Responsibility             | We assume that if the driver requires a rest, and doesn't actually take it, then we classify the driver as responsible
 |Detection                         | We assume that if the driver's space of visualization, influenced by the environment lighting, is poor, we classify it as weak space of visualization
 |Identification                    | We assume that if weather conditions are bad, we classify the space as unidentifiable
-|Risk Analysis                     | We assume that if the weather conditions are bad and if the av location is dangerous, we classify it as high risk. If the 
-weather conditions are bad or if the av location is dangerous, we classify it as medium risk, otherwise we classify it as low risk
+|Risk Analysis                     | We assume that if the weather conditions are bad and if the av location is dangerous, we classify it as high risk. If the weather conditions are bad or if the av location is dangerous, we classify it as medium risk, otherwise we classify it as low risk
 |Reaction                          | We assume that if the weather conditions are bad we classify as reduced detection
 |Execution                         | We assume that if Av status shows slow down, then we classify it as slow down, otherwise we classify it as may continue
 
