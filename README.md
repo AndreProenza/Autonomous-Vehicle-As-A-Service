@@ -369,7 +369,7 @@ An example of a JSON message produced by the event producer tool:
 {"AV_Event":
          {
              "TimeStamp":"2022-02-04 14:49:07.401",
-             "AV_ID":"Toyota-with-driver259876",
+             "AV_ID":"av-event",
              "Speed":"49",
              "BatteryLevel":"10",
              "DriverTirenessLevel":"85",
