@@ -277,7 +277,9 @@ Run the AVaaS system:
 ```
 
 To verify the AV producer and consumer functionality, open `Swagger UI` in the
-following url address: [localhost:4080/q/swagger-ui/](https://localhost:4080/q/swagger-ui/)
+following url address:
+
+[localhost:4080/q/swagger-ui/](https://localhost:4080/q/swagger-ui/)
 
 Access the url above, hit `Av Kafka Resource`, choose the operation `POST /kafka/produce/av`, hit `Try it out`, input some date like the following
 
@@ -359,6 +361,28 @@ Run again the AVaaS system:
 ```code
 ./mvnw quarkus:dev
 ```
+
+Let's now run the producer tool to produce some random AV_Events to the `av-event` topic:
+
+An example of a JSON message produced by the event producer tool:
+```code
+{"AV_Event":
+         {
+             "TimeStamp":"2022-02-04 14:49:07.401",
+             "AV_ID":"Toyota-with-driver259876",
+             "Speed":"49",
+             "BatteryLevel":"10",
+             "DriverTirenessLevel":"85",
+             "Location":"38.735330392 -9.13666612",
+             "EnvironmentalLightning":"Good",
+             "RainConditions":"Light Rain",
+             "FogConditions":"None",
+             "TractionWheelsLevel":"25"
+         }
+}
+```
+
+Find the jar `AVaaSSimulator.jar` located in the `avaas/` folder.
 
 To run the `AV_Events` producer tool:
 ```code
