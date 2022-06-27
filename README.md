@@ -24,11 +24,12 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 7. [Use Cases Sequence Diagrams](#use-cases-sequence-diagrams) 
 8. [CRUD Implementation](#crud-implementation)
 9. [Use Cases Implementation](#use-cases-implementation)
-10. [BPMN Files](#bpmn-files)
-11. [Used Technologies](#used-technologies)
-12. [AVaaS API](#avaas-api)
-13. [References](#references)
-14. [Authors](#authors)
+10. [Kafka Implementation](#kafka-implementation)
+11. [BPMN Files](#bpmn-files)
+12. [Used Technologies](#used-technologies)
+13. [AVaaS API](#avaas-api)
+14. [References](#references)
+15. [Authors](#authors)
 
 ---
 
@@ -239,7 +240,55 @@ and user.
 To verify the application's functionality and test the microservices, please use
 `Swagger UI`in the url mentioned previously.
 
+For the last use case, IQ, EQ, AQ Autonomous driving, we will it all detailed below 
+in `Kafka Implementation`
 
+---
+
+## Kafka Implementation
+
+To implement the AV producer and consumer high availability mechanism, we used the
+SmallRye Reactive Messaging framework supported by Quarkus which provides
+support for Apache Kafka.
+
+To execute this mechanism, a Kafka broker is required. To start it, first run locally
+zookeeper and kafka.
+
+Open a terminal and run:
+```code
+# Start the ZooKeeper service
+# Note: Soon, ZooKeeper will no longer be required by Apache Kafka.
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+Open another terminal and run:
+```code
+# Start the Kafka broker service
+$ bin/kafka-server-start.sh config/server.properties
+```
+
+##### Note: Apache kafka is required to be installed in your machine.
+##### Donwload it here: [Apache Kafka](https://kafka.apache.org/quickstart)
+
+After having executed the previous commands, lets now run the application:
+
+Run the AVaaS system:
+```code
+./mvnw quarkus:dev
+```
+
+To verify the AV producer and consumer functionality, open `Swagger UI` in the
+following url address: [localhost:4080/q/swagger-ui/](https://localhost:4080/q/swagger-ui/)
+
+Access the url above, hit `Av Kafka Resource`, choose the operation `POST /kafka/produce/av`, hit `Try it out`, input some date like the following
+
+```code
+ {
+  “id”: 20,
+  “brand”: “BMW”,
+  “model”: i8”
+ }
+```
 ---
 
 ## BPMN Files
@@ -256,7 +305,7 @@ We develop the `BPMN` files for each of the use cases. You can check them in the
 * [Docker](https://www.docker.com/) - Containerization Platform;
 * [Quarkus](https://quarkus.io/) - Kubernetes Native Java stack;
 * [Camunda](https://camunda.com/) - Java-based framework process engine;  Workflow and Decision Automation Platform;
-* [SpringBoot)(spring.io/projects/spring-boot) - Java-based Spring Framework to develop web application and microservices 
+* [SpringBoot](spring.io/projects/spring-boot) - Java-based Spring Framework to develop web application and microservices 
 
 ---
 
