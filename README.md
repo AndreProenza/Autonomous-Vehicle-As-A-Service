@@ -248,8 +248,7 @@ in `Kafka Implementation`
 
 ## Kafka Implementation
 
-To simulate an `AV Manufacturer` introducing a new car model to the AVaaS system, we created an AV producer and consumer high availability mechanism. For that, we used the `SmallRye Reactive Messaging` framework supported by `Quarkus` which provides
-support for `Apache Kafka`.
+To simulate an `AV Manufacturer` introducing a new car model to the AVaaS system, we created an AV producer and consumer high availability mechanism. For that, an `AV Manufacturer` will introduce that data into this resource `Av Kafka Resource`, then the data will be consumed by a kafka topic in `quarkus`. We used the `SmallRye Reactive Messaging` framework supported by `Quarkus` which provides support for `Apache Kafka`.
 
 To execute this mechanism, a Kafka broker is required. To start it, first run locally
 zookeeper and kafka.
@@ -309,7 +308,87 @@ Run:
 ```code
 bash produceAVs.sh
 ```
-Check the AV's being consumed in the application terminal
+Check the AV's being consumed in the application terminal.
+
+## IQ, EQ, AQ Autonomous driving
+
+To fulfill the last use case, we used kafka to `consume` data from `topics`, process that data, 
+and produce data for another topic to consume until finally a `GUI` can consume the last 
+`topic`.
+
+We will explain later how the process works. 
+If you are testing the application, please `run the ZooKeeper service` followed by the `Kafka 
+broker service`, as shown above.
+
+##### Do this if not already running.
+
+After they are up and running, create the following `topics`:
+- av-event
+- apilot
+- av-result.
+
+These topics will be produced by command line, and the data produced to the topic `av-event` will be produced by the `event producer tool`. 
+
+The topics will have a `replication factor of 1`. We will use `1 partition` for each one of them, 
+which means we could have only one 1 Kafka consumer
+
+Create the `av-event` by running:
+```code
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --
+partitions 1 --topic av-event
+```
+
+Create the `apilot` by running:
+```code
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --
+partitions 1 --topic apilot
+```
+
+Create the `av-result` by running:
+```code
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --
+partitions 1 --topic av-result
+```
+
+To list the topics run:
+```code
+$ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+```
+
+Run again the AVaaS system:
+```code
+./mvnw quarkus:dev
+```
+
+To run the `AV_Events` producer tool:
+```code
+$ java -jar AVaaSSimulator.jar --broker-list localhost:9092 --throughput 3 --typeMessage 
+JSON
+```
+
+Now, we will explain the different phases of the use case
+
+For the `Mediation to APILOT`, we want to be able to `mediate between AV events` and 
+`APILOT`. We consume each `AV_Event` by processing the content and setting it up to 
+produce to the `apilot topic`, which will be useful for the `APilot (simulation) functionality`.
+
+For the `APILOT functionality (simulation)` we want to be able to pilot the AV. For that, we 
+process the previously consumed `AV_Event` data and send it to the `apilot` topic, with the 
+following restrictions
+
+| Restriction                      | Detail                
+|:--------------------------------:|:---------------------------------
+|Time Stamp                        |
+|AV Id                             |
+|Speed                             | if the speed is greater than 50 we apply brakes
+|Battery Level                     | if the battery level is lower than 20% an advice is sent to charge the car
+|DriverTirednessLevel              | if the driver’s tiredness level is higher than 70% an advice is sent to rest a while
+|Location                          | If the location is somewhere unknown an advice is sent as dangerous zone
+|EnvironmentalLightning            | If the environmental lightning is N/A or bad an advice is sent as bad space visualization
+|RainConditions                    | If the rain conditions is Heavy rain, an weather status advice is sent as bad
+|FogConditions                     | If the fog conditions is Dense fog, an weather status advice is sent as bad
+|TractionWheelsLevel               | If traction wheels level is lower than 20% an advice is sent av status
+|AvStatus                          | If Speed, battery level, driver tiredness level, location, environmental lightening, rain conditions, fog conditions, and traction wheels level follow the above rules, then an advice is sent that the av may continue driving, otherwise and advice is sent to slow down the av
 
 ---
 
