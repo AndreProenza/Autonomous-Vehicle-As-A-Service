@@ -475,14 +475,14 @@ mvn spring-boot:run
 ```
 
 To view the data consumed from the `av-result` topic (which contains the IQ, EQ, AQ recommendations)
-Open your browser at the following url:
 
+Open your browser at the following url:
 [localhost:5000/avresult/ui](http://localhost:5000/avresult/ui)
 
 We also created an interface for the apilot to be able to view the consumed advices from the apilot topic. 
 To view the data consumed from the `apilot` topic (which contains the APilot advices)
-Open your browser at the following url:
 
+Open your browser at the following url:
 [localhost:5000/apilot/ui](http://localhost:5000/apilot/ui)
 
 ##### Refresh the page to consume other messages from the topics.
