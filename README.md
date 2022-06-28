@@ -17,22 +17,29 @@ in the cars, while AVaaS are extended capabilities that could be deployed in the
 
 # Table of Contents
 1. [Introduction](#introduction)
-2. [Core Concepts](#core-concepts)
-3. [Participants](#participants)
-4. [System of Interest](#system-of-interest)
-5. [Use Cases](#use-cases)
-6. [Architecture](#architecture)
-7. [Use Cases Sequence Diagrams](#use-cases-sequence-diagrams) 
-8. [CRUD Implementation](#crud-implementation)
-9. [Use Cases Implementation](#use-cases-implementation)
-10. [Kafka Implementation](#kafka-implementation)
-11. [Get Started](#get-started)
-12. [BPMN Files](#bpmn-files)
-13. [Used Technologies](#used-technologies)
-14. [AVaaS API](#avaas-api)
-15. [Requirements](#requirements)
-16. [References](#references)
-17. [Authors](#authors)
+2. [System Live Video](#system-live-video)
+3. [Core Concepts](#core-concepts)
+4. [Participants](#participants)
+5. [System of Interest](#system-of-interest)
+6. [Use Cases](#use-cases)
+7. [Architecture](#architecture)
+8. [Use Cases Sequence Diagrams](#use-cases-sequence-diagrams) 
+9. [CRUD Implementation](#crud-implementation)
+10. [Use Cases Implementation](#use-cases-implementation)
+11. [Kafka Implementation](#kafka-implementation)
+12. [Get Started](#get-started)
+13. [BPMN Files](#bpmn-files)
+14. [Used Technologies](#used-technologies)
+15. [AVaaS API](#avaas-api)
+16. [Requirements](#requirements)
+17. [References](#references)
+18. [Authors](#authors)
+
+---
+
+## System Live Video
+
+https://user-images.githubusercontent.com/78174997/176154285-b4ee0894-86b6-4f00-9f9c-b3affebc5272.mp4
 
 ---
 
