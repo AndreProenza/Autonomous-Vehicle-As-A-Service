@@ -45,6 +45,9 @@ https://user-images.githubusercontent.com/78174997/176154285-b4ee0894-86b6-4f00-
 
 ## Core concepts 
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 | Concept                          | Definition                
 |:--------------------------------:|:---------------------------------
 |Autonomous Vehicle (AV)           | Are cars that employ sensor, computer, machine learning, or artificial intelligence (AI)-based systems to support automated driving decisions regarding steering, changes in speeds, and monitoring the environment. 
@@ -55,27 +58,42 @@ https://user-images.githubusercontent.com/78174997/176154285-b4ee0894-86b6-4f00-
 |AVaaS user                        | The customer of AVaaS that uses the AVaaS provided services
 |AVaaS Employee                    | Internal AVaaS resource that oversees AVaaS’ business processes management and execution.
 
+</details>
+
 ---
 
 ## Participants
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 The following participants are considered in this project accordingly with the previous core concepts:
 
 <img src="https://user-images.githubusercontent.com/78174997/168423748-39b6d5fa-c4a3-4ef1-bc74-c8761e307363.png" width="630" height="320"/>
 
+</details>
+
 --- 
 
 ## System of Interest 
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 The system of interest developed in this project is the following. AVaaS system is responsible to mediate the 
 depicted participants accordingly with the use cases described in the use cases section.
 
 <img src="https://user-images.githubusercontent.com/78174997/168423860-db74fb48-6409-4cb8-90a4-8468fe0db114.png" width="630" height="320"/>
 
+</details>
+
 ---
 
 ## Use Cases
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 The following six use cases are considered in the project:
 
 ### User subscribing/unsubscribing to AvaaS
@@ -86,7 +104,12 @@ user about the access to the service.
 
 <img src="https://user-images.githubusercontent.com/78174997/168424002-643fc0a2-171f-4f3a-90ed-0d6f840f1f2e.png" width="500" height="270"/>
 
+</details>
+
 ### Car manufacturer entering/removing/updating to AVaaS catalog
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 - The car manufacturer company can add, remove, or update its cars offer to AVaaS catalog. No validation is performed 
 by the AVaaS employees. The car manufacturer is responsible to the quality of the information provided. Adding, 
@@ -94,17 +117,26 @@ removing, or updating the catalog represents a topic Kafka provisioning operatio
 
 <img src="https://user-images.githubusercontent.com/78174997/168424715-69e511b3-2dd9-4095-beca-bb59c465a3a8.png" width="500" height="270"/>
 
+</details>
 
 
 ### APILOT developer entering/removing/updating to AVaaS catalog
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 - The APILOT developer company can add, remove, or update its APILOT systems offer to AVaaS catalog. No validation 
 is performed by the AVaaS employees. The APILOT developer is responsible to the quality of the information provided.
 Adding, removing, or updating the catalog represents a topic Kafka provisioning operation
 
 <img src="https://user-images.githubusercontent.com/78174997/168424065-cf877263-ad1a-4c63-863b-93b255f6f2a8.png" width="500" height="270"/>
 
+</details>
+
 ### User buying/selling a car 
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 - A previous subscribed AVaaS user can buy or sell a car that is previously provided in the catalog by a car manufacturer. 
 For that purpose, the AVaaS employee requests information, validates the user information and then assign or unassign 
@@ -112,7 +144,12 @@ the car to a AVaaS user and then informs the user and the car manufacturer
 
 <img src="https://user-images.githubusercontent.com/78174997/168424101-6bd045cd-0ff4-4a06-8c0c-aedc8cd5fb83.png" width="500" height="270"/>
 
+</details>
+
 ### User selecting/unselecting an APILOT to a car
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 - A previous subscribed AVaaS user, with a car, can select or unselect a APILOT that is previously provided in the 
 catalog by a APILOT developer. For that purpose, the AVaaS employee requests information, validates the user 
@@ -121,62 +158,106 @@ developer.
 
 <img src="https://user-images.githubusercontent.com/78174997/168424116-f9930d23-d5ce-4dc6-b5df-81e968e24093.png" width="500" height="270"/>
 
+</details>
+
 ### IQ, EQ, AQ Autonomous driving
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 - AVaaS is responsible to observe all the relevant events produces by cars, send it to the APILOT and then consume 
 the high-level events that can produce IQ, EQ an AQ events. For that end, external services could be triggered
 
 <img src="https://user-images.githubusercontent.com/78174997/168424141-1c65c562-f3f6-44b6-9143-e4ffb0ed75d4.png" width="500" height="270"/>
 
+</details>
+
 ---
 
 ## Architecture
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 The following diagrams help to better understand the AVaaS system.
 
 In the diagram below you can view in detail the relationship between tables and their attributes.
 
 ![image](https://user-images.githubusercontent.com/78174997/176013468-6c522b24-0afe-4a64-b1e7-72adec338663.png)
 
+</details>
+
 ---
 
 ## Use Cases Sequence Diagrams 
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 To better ilustrate our AVaaS implementation logic, we drew a sequence diagram for each use case. We present them below
 
+</details>
 
 #### User subscribing/unsubscribing to AvaaS
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+
 <img src="https://user-images.githubusercontent.com/78174997/176016429-4e0ead88-02ac-4be3-8fa5-50841501df33.png" width="520" height="300"/>
 
+</details>
 
 #### Car manufacturer entering/removing/updating to AVaaS catalog
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+
 <img src="https://user-images.githubusercontent.com/78174997/176017699-57b7b212-a133-4e12-9ad2-7c709cc8c7a7.png" width="520" height="200"/>
 
+</details>
 
 #### APILOT developer entering/removing/updating to AVaaS catalog
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+
 <img src="https://user-images.githubusercontent.com/78174997/176016583-1962ed1b-8c23-4759-a8ba-2c8dc44870ae.png" width="520" height="200"/>
 
+</details>
 
 #### User buying/selling a car
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+
 <img src="https://user-images.githubusercontent.com/78174997/176016610-22d4837c-d3eb-4037-950e-a043c0e8bc9b.png" width="520" height="300"/>
 
+</details>
 
 #### User selecting/unselecting an APILOT to a car
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 <img src="https://user-images.githubusercontent.com/78174997/176016646-31ea3895-0fc4-4c47-8ece-2c2440363d5d.png" width="520" height="300"/>
 
+</details>
 
 #### IQ, EQ, AQ Autonomous driving
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+
 <img src="https://user-images.githubusercontent.com/78174997/176017513-90758b1d-f8aa-4db7-93dc-8a13921bda04.png" width="520" height="300"/>
+
+</details>
 
 ---
 
 ## CRUD Implementation
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 We implemented the `CRUD` operations for each table shown above in the Architecture diagram.
 The implementation was supported by the `Quarkus Java framework`.
@@ -209,9 +290,14 @@ There you can test the following API resources:
 
 ##### Note: We populated all the tables with some records. We suggest that before testing any CRUD operation, you first verify which records already exist in the tables. You can query all records in the AV table by following these instructions: For example, access the url above, hit "AV Resource", choose the operation "GET /av/all", hit "Try it out", and execute
 
+</details>
+
 ---
 
 ## Use Cases Implementation
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 We implemented the different use cases using REST endpoints that access the microservices of the AVaaS system. We assume that the "Employee" entity handles the users' requests, validates them, executes the API requests and responds to the client.
 
@@ -253,10 +339,15 @@ To verify the application's functionality and test the microservices, please use
 For the last use case, IQ, EQ, AQ Autonomous driving, we will it all detailed below 
 in `Kafka Implementation`
 
+</details>
+
 ---
 
 ## Kafka Implementation
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+ 
 To simulate an `AV Manufacturer` introducing a new car model to the AVaaS system, we created an AV producer and consumer high availability mechanism. For that, an `AV Manufacturer` will introduce that data into this resource `Av Kafka Resource`, then the data will be consumed by a kafka topic in `quarkus`. We used the `SmallRye Reactive Messaging` framework supported by `Quarkus` which provides support for `Apache Kafka`.
 
 To execute this mechanism, a Kafka broker is required. To start it, first run locally
@@ -321,7 +412,12 @@ bash produceAVs.sh
 ```
 Check the AV's being consumed in the application terminal.
 
+</details>
+
 ## IQ, EQ, AQ Autonomous driving
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 To fulfill the last use case, we used kafka to `consume` data from `topics`, process that data, 
 and produce data for another topic to consume until finally a `GUI` can consume the last 
@@ -496,14 +592,18 @@ Open your browser at the following url:
 
 ##### Refresh the page to consume other messages from the topics.
 
+</details>
+
 ---
 
 ## Get Started
 
 To immediately start testing the project on your local machine, (Not recommended before reading the documentation), execute the following steps:
-
-
+ 
 ### Run Kafka
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 Open a terminal and run:
 ```code
@@ -518,7 +618,12 @@ Open another terminal and run:
 $ bin/kafka-server-start.sh config/server.properties
 ```
 
+</details>
+
 ### Create Kafka Topics
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 Open another terminal and type the following instructions:
 
@@ -540,7 +645,12 @@ $ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-f
 partitions 1 --topic av-result
 ```
 
+</details>
+
 ### Run Quarkus AVaaS System
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 The source code is located in the `avaas/` folder. Open a terminal and type:
 
@@ -549,7 +659,12 @@ Run the AVaaS system:
 ./mvnw quarkus:dev
 ```
 
+</details>
+
 ### Run The Producer Tool
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 Open a terminal and type:
 
@@ -559,7 +674,12 @@ $ java -jar AVaaSSimulator.jar --broker-list localhost:9092 --throughput 3 --typ
 JSON
 ```
 
+</details>
+
 ### Run APilot GUI
+
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
 
 The source code is located in the `apilot/` folder.
 Open a terminal and type:
@@ -578,12 +698,19 @@ Open your another browser tab at the following url:
 
 ##### Refresh the page to consume other messages from the topics.
 
+</details>
+
 ---
 
 ## BPMN Files
 
+<details>
+  <summary align="left"><b>&nbsp;Show more</b></summary>
+
 We develop the `BPMN` files for each of the use cases. You can check them in the folder 
 `bpmn/`.
+
+</details>
 
 ---
 
